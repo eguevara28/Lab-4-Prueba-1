@@ -6,26 +6,32 @@ package guevara_ernesto_prueba;
 
 import java.util.Scanner;
 import java.util.Random;
+
 /**
  *
  * @author Ernesto
  */
 public class Guevara_Ernesto_Prueba1 {
-
     public static void main(String[] args) {
 
         Scanner lea = new Scanner(System.in);
         Random random = new Random();
 
+        int op1 = 0, op2 = 0, op3 = 0, op4 = 0;
+        
         while (true) {
             System.out.println("*** Menu ***");
             System.out.println("1. Palabra Alreves");
             System.out.println("2. Numero perfecto");
             System.out.println("3. Numeros Primos");
             System.out.println("4. Votaciones");
+            System.out.println("5. Salir");
             int op = lea.nextInt();
 
             if (op == 1) {
+
+                op1++;
+
                 System.out.println("Ingrese una palabra: ");
                 String palabra = lea.next();
                 String palabraalreves = "";
@@ -38,6 +44,7 @@ public class Guevara_Ernesto_Prueba1 {
             }
 
             if (op == 2) {
+                op2++;
                 System.out.println("Ingrese un numero cualquiera: ");
                 int numero = lea.nextInt();
                 int suma = 0;
@@ -47,91 +54,110 @@ public class Guevara_Ernesto_Prueba1 {
                     }
                 }
                 if (suma == numero) {
-                    System.out.println("El numero "+numero+" es perfecto");
+                    System.out.println("El numero " + numero + " es perfecto");
                 }
 
                 if (suma != numero) {
-                    System.out.println("El numero "+numero+" no es pefecto");
+                    System.out.println("El numero " + numero + " no es pefecto");
                 }
             }
-            
-            if(op==3){
-                
+
+            if (op == 3) {
+
+                op3++;
+
                 System.out.println("Se generara un numero aleatorio y se determinara si es un numero primo o no");
-                
-                int numeroaleatorio=random.nextInt(100)+1;
-                
-                
-                int divisibles=0;
-                
+
+                int numeroaleatorio = random.nextInt(100) + 1;
+
+                int divisibles = 0;
+                String divisores = "";
+
                 for (int i = 1; i <= numeroaleatorio; i++) {
-                    if(numeroaleatorio % i==0){
-                        divisibles+=i;
+                    if (numeroaleatorio % i == 0) {
+                        divisores += i + " ";
+                        divisibles += i;
                     }
                 }
-                
-                if(divisibles==numeroaleatorio+1){
-                    System.out.println("El numero "+numeroaleatorio+" es primo");
-                    System.out.println("Los divisores son: 1 y "+numeroaleatorio);
-                }else
-                    System.out.println("El numero "+numeroaleatorio+" No es primo");
-                
+
+                if (divisibles == numeroaleatorio + 1) {
+                    System.out.println("El numero " + numeroaleatorio + " es primo");
+                    System.out.println("Los divisores son: 1 y " + numeroaleatorio);
+                } else {
+                    System.out.println("El numero " + numeroaleatorio + " No es primo");
+                    System.out.println("Los divisores son: " + divisores);
+                }
+
             }
-            
-            if(op == 4){
+
+            if (op == 4) {
+
+                op4++;
+
                 System.out.println("Cuantos votantes hay en el pais?: ");
-                int votantes=lea.nextInt();
-                
-                int azul=0, rojo=0, negro=0, amarillo=0, nulo=0, validos=0;
-                
+                int votantes = lea.nextInt();
+
+                int azul = 0, rojo = 0, negro = 0, amarillo = 0, nulo = 0, validos = 0;
+
                 for (int i = 1; i <= votantes; i++) {
                     System.out.println("Elecciones:");
                     System.out.println("AZUL");
                     System.out.println("ROJO");
                     System.out.println("NEGRO");
                     System.out.println("AMARILLO");
-                    String voto=lea.next().toUpperCase();
-                    
-                    if(voto.equals("AZUL")){
+                    String voto = lea.next().toUpperCase();
+
+                    if (voto.equals("AZUL")) {
                         azul++;
                         validos++;
-                    }else if(voto.equals("ROJO")){
+                    } else if (voto.equals("ROJO")) {
                         rojo++;
                         validos++;
-                    }else if(voto.equals("NEGRO")){
+                    } else if (voto.equals("NEGRO")) {
                         negro++;
                         validos++;
-                    }else if(voto.equals("AMARILLO")){
+                    } else if (voto.equals("AMARILLO")) {
                         amarillo++;
                         validos++;
-                    }else nulo++;
+                    } else {
+                        nulo++;
+                    }
                 }
-                
-                double porcentaje=(validos*100)/votantes;
-                if(porcentaje>60.0){
-                    
-                    if(azul>rojo && azul>negro && azul>amarillo){
+
+                double porcentaje = (validos * 100) / votantes;
+                if (porcentaje > 60.0) {
+
+                    if (azul > rojo && azul > negro && azul > amarillo) {
                         System.out.println("El ganador es: Azul");
-                        System.out.println("Con "+azul+" votos");
+                        System.out.println("Con " + azul + " votos");
                     }
-                    
-                    if(rojo>azul && rojo>negro && rojo>amarillo){
+
+                    if (rojo > azul && rojo > negro && rojo > amarillo) {
                         System.out.println("El ganador es: Rojo");
-                        System.out.println("Con "+rojo+" votos");
+                        System.out.println("Con " + rojo + " votos");
                     }
-                    
-                    if(negro>rojo && negro>azul && negro>amarillo){
+
+                    if (negro > rojo && negro > azul && negro > amarillo) {
                         System.out.println("El ganador es: Negro");
-                        System.out.println("Con "+negro+" votos");
+                        System.out.println("Con " + negro + " votos");
                     }
-                    
-                    if(amarillo>rojo && amarillo>azul && amarillo>negro){
+
+                    if (amarillo > rojo && amarillo > azul && amarillo > negro) {
                         System.out.println("El ganador es: Amarillo");
-                        System.out.println("Con "+amarillo+" votos");
+                        System.out.println("Con " + amarillo + " votos");
                     }
-                }else{
+                } else {
                     System.out.println("VOTACION FALLIDA");
                 }
+            }
+
+            if (op == 5) {
+                System.out.println("Veces entradas a Palbra Alreves: " + op1);
+                System.out.println("Veces entradas a Numero Perfecto: " + op2);
+                System.out.println("Veces entradas a Numero Primo: " + op3);
+                System.out.println("Veces entradas a Votaciones: " + op4);
+                System.out.println("Nos vemos!");
+                break;
             }
         }
     }
